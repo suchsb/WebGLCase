@@ -3,10 +3,8 @@ var VSHADER_SOURCE =
     'attribute vec4 a_Color;\n' +
     'varying vec4 v_Color;\n' +
     'uniform mat4 u_ViewMatrix;\n' +
-    'uniform mat4 u_ModelMatrix;\n' +
-    'uniform mat4 u_mvMatrix;\n' +
     'void main() {\n' +
-    '   gl_Position = u_mvMatrix*a_Position;\n' +
+    '   gl_Position = u_ViewMatrix*a_Position;\n' +
     '   v_Color = a_Color;\n' +
     '}\n';
 var FSHADER_SOTRCE =
@@ -16,6 +14,8 @@ var FSHADER_SOTRCE =
     '   gl_FragColor = v_Color;\n' +
     '}\n';
 
+var g_eyeX = 0.20, g_eyeY = 0.25, g_eyeZ = 0.25;
+
 function main() {
     var canvas = document.getElementById("webgl");
     var gl = getWebGLContext(canvas);
@@ -23,13 +23,12 @@ function main() {
         console.log('Faild to get the rendering context for WebGL');
     }
 
+    gl.clearColor(0.0, 0.0, 0.0, 1.0);
+
     if (!initShaders(gl, VSHADER_SOURCE, FSHADER_SOTRCE)) {
         console.log('Faild to initialize shaders.');
         return;
     }
-
-    gl.clearColor(0.0, 0.0, 0.0, 1.0);
-    gl.clear(gl.COLOR_BUFFER_BIT);
 
     var n = initVertexBuffers(gl);
     if (n < 0) {
@@ -42,30 +41,13 @@ function main() {
         console.log("无法获取矩阵变量的存储位置");
         return;
     }
-
-    var u_ModelMatrix = gl.getUniformLocation(gl.program, "u_ModelMatrix");
-    if (u_ModelMatrix < 0) {
-        console.log("无法获取旋转变量的存储位置");
-        return;
-    }
-
-    var u_mvMatrix = gl.getUniformLocation(gl.program, "u_mvMatrix");
-    if (u_mvMatrix < 0) {
-        console.log("无法获取旋转变量的存储位置");
-        return;
-    }
-
     //设置视角矩阵的相关信息（视点，视线，上方向）
     var viewMatrix = new Matrix4();
-    viewMatrix.setLookAt(0.20, 0.25, 0.25, 0, 0, 0, 0, 1, 0);
+    draw(gl, n, u_ViewMatrix, viewMatrix);
 
-    var modelMatrix = new Matrix4();
-    modelMatrix.setRotate(-10,0,0,1);
-
-    var mvMatrix = viewMatrix.multiply(modelMatrix);
-    gl.uniformMatrix4fv(u_mvMatrix,false,mvMatrix.elements);
-
-    gl.drawArrays(gl.TRIANGLES, 0, n);
+    document.onkeydown = function (ev) {
+        keydown(ev, gl, n, u_ViewMatrix, viewMatrix);
+    }
 }
 
 function initVertexBuffers(gl) {
@@ -124,3 +106,23 @@ function initVertexBuffers(gl) {
 
     return n;
 }
+
+function keydown(ev, gl, n, u_ViewMatrix, viewMatrix) {
+    if (ev.keyCode == 39) {
+        g_eyeX += 0.01;
+    } else if (ev.keyCode == 37) {
+        g_eyeX -= 0.01;
+    } else {
+        return;
+    }
+    draw(gl, n, u_ViewMatrix, viewMatrix);
+}
+
+function draw(gl, n, u_ViewMatrix, viewMatrix) {
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    viewMatrix.setLookAt(g_eyeX, g_eyeY, g_eyeZ, 0, 0, 0, 0, 1, 0);
+    //将试图矩阵传给u_ViewMatrix变量
+    gl.uniformMatrix4fv(u_ViewMatrix, false, viewMatrix.elements);
+    gl.drawArrays(gl.TRIANGLES, 0, n);
+}
+
