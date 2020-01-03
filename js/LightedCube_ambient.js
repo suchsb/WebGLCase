@@ -6,13 +6,15 @@ var VSHADER_SOURCE = "" +
     "uniform mat4 u_ModelViewMatrix;\n" +
     "uniform vec3 u_LightColor;\n" + //光线颜色
     "uniform vec3 u_LightDirection;\n" + //归一化的光线坐标
+    "uniform vec3 u_AmbientLight;\n" + //环境光颜色
     "varying vec4 v_Color;\n" +
     "void main(){\n" +
     "   gl_Position = u_ModelViewMatrix * a_Position;\n" +
     "   vec3 normal = normalize(vec3(a_Normal));\n" +
     "   float nDotL = max(dot(u_LightDirection, normal), 0.0);\n" +
     "   vec3 diffuse = u_LightColor*vec3(a_Color)*nDotL;\n" +
-    "   v_Color = vec4(diffuse,a_Color.a);\n" +
+    "   vec3 ambient = u_AmbientLight*a_Color.rgb;\n" +
+    "   v_Color = vec4(diffuse + ambient,a_Color.a);\n" +
     "}\n";
 
 //片元着色器
@@ -68,12 +70,20 @@ function main() {
         return;
     }
 
+    //设置视角矩阵的相关信息
+    var u_AmbientLight = gl.getUniformLocation(gl.program, "u_AmbientLight");
+    if (u_AmbientLight < 0) {
+        console.log("无法获取环境光的存储位置");
+        return;
+    }
+
     //设置光线颜色
     gl.uniform3f(u_LightColor,1.0,1.0,1.0);
     //设置光线方向
     var lidhtDirection = new Vector3([0.5,3.0,4.0]);
     lidhtDirection.normalize();
     gl.uniform3fv(u_LightDirection, lidhtDirection.elements);
+    gl.uniform3f(u_AmbientLight,0.2,0.2,0.2);
 
     //设置底色
     gl.clearColor(0.0, 0.0, 0.0, 1.0);

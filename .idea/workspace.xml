@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e003437f-a28c-4ae5-8aa2-16ab9d06022e" name="Default Changelist" comment="DepthBuffer">
-      <change afterPath="$PROJECT_DIR$/cha4/ColorCubes.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cha4/HelloCubes.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cha5/LightedCube.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/ColorCubes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/HelloCubes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/LightedCube.js" afterDir="false" />
+    <list default="true" id="e003437f-a28c-4ae5-8aa2-16ab9d06022e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/cha5/LightedCube_ambient.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/LightedCube_ambient.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/LightedCube.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/LightedCube.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +74,12 @@
       <workItem from="1577065064795" duration="12100000" />
       <workItem from="1577159109011" duration="10512000" />
       <workItem from="1577232312602" duration="19117000" />
-      <workItem from="1577318802003" duration="17686000" />
+      <workItem from="1577318802003" duration="19022000" />
+      <workItem from="1577405545414" duration="1347000" />
+      <workItem from="1577757773289" duration="7358000" />
+      <workItem from="1577923619778" duration="1257000" />
+      <workItem from="1577945539859" duration="4503000" />
+      <workItem from="1578010539448" duration="606000" />
     </task>
     <task id="LOCAL-00001" summary="LookAtRotatedTriangles">
       <created>1577169437679</created>
@@ -121,7 +123,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577264551920</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="3DWorld">
+      <created>1577349497040</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1577349497040</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,6 +154,7 @@
     <MESSAGE value="2cases" />
     <MESSAGE value="20191225" />
     <MESSAGE value="DepthBuffer" />
-    <option name="LAST_COMMIT_MESSAGE" value="DepthBuffer" />
+    <MESSAGE value="3DWorld" />
+    <option name="LAST_COMMIT_MESSAGE" value="3DWorld" />
   </component>
 </project>
