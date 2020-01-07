@@ -2,10 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e003437f-a28c-4ae5-8aa2-16ab9d06022e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cha5/LightedCube_ambient.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/LightedCube_ambient.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cha5/LightedTranslatedRotatedCube.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/LightedTranslatedRotatedCube.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/LightedCube.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/LightedCube.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cha1/ColorPoints.html" beforeDir="false" afterPath="$PROJECT_DIR$/cha1/ColorPoints.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cha2/RotatedTranslatedTriangle.html" beforeDir="false" afterPath="$PROJECT_DIR$/cha2/RotatedTranslatedTriangle.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cha2/RotatedTriangle_Matrix4.html" beforeDir="false" afterPath="$PROJECT_DIR$/cha2/RotatedTriangle_Matrix4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cha3/MultiAttributeColor.html" beforeDir="false" afterPath="$PROJECT_DIR$/cha3/MultiAttributeColor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cha3/MultiAttributeSize_Interleaved.html" beforeDir="false" afterPath="$PROJECT_DIR$/cha3/MultiAttributeSize_Interleaved.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cha4/LookAtRotatedTriangles_mvMatrix.html" beforeDir="false" afterPath="$PROJECT_DIR$/cha4/LookAtRotatedTriangles_mvMatrix.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cha4/LookAtTriangles.html" beforeDir="false" afterPath="$PROJECT_DIR$/cha4/LookAtTriangles.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cha4/LookAtTrianglesWithKeys.html" beforeDir="false" afterPath="$PROJECT_DIR$/cha4/LookAtTrianglesWithKeys.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cha4/OrthoView.html" beforeDir="false" afterPath="$PROJECT_DIR$/cha4/OrthoView.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,7 +87,10 @@
       <workItem from="1577757773289" duration="7358000" />
       <workItem from="1577923619778" duration="1257000" />
       <workItem from="1577945539859" duration="4503000" />
-      <workItem from="1578010539448" duration="606000" />
+      <workItem from="1578010539448" duration="1522000" />
+      <workItem from="1578036997039" duration="411000" />
+      <workItem from="1578299245353" duration="707000" />
+      <workItem from="1578356431224" duration="2704000" />
     </task>
     <task id="LOCAL-00001" summary="LookAtRotatedTriangles">
       <created>1577169437679</created>
@@ -130,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577349497040</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Cubes">
+      <created>1578015556499</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1578015556499</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,6 +173,7 @@
     <MESSAGE value="20191225" />
     <MESSAGE value="DepthBuffer" />
     <MESSAGE value="3DWorld" />
-    <option name="LAST_COMMIT_MESSAGE" value="3DWorld" />
+    <MESSAGE value="Cubes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cubes" />
   </component>
 </project>
