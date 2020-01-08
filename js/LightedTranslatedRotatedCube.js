@@ -3,14 +3,15 @@ var VSHADER_SOURCE = "" +
     "attribute vec4 a_Position;\n" +
     "attribute vec4 a_Color;\n" +
     "attribute vec4 a_Normal;\n" + //法向量
-    "uniform mat4 u_ModelViewMatrix;\n" +
+    "uniform mat4 u_ModelViewMatrix;\n" + //模型矩阵
+    "uniform mat4 u_NormalMatrix;\n" + //模型矩阵
     "uniform vec3 u_LightColor;\n" + //光线颜色
     "uniform vec3 u_LightDirection;\n" + //归一化的光线坐标
     "uniform vec3 u_AmbientLight;\n" + //环境光颜色
     "varying vec4 v_Color;\n" +
     "void main(){\n" +
     "   gl_Position = u_ModelViewMatrix * a_Position;\n" +
-    "   vec3 normal = normalize(vec3(a_Normal));\n" +
+    "   vec3 normal = normalize(vec3(u_NormalMatrix * a_Normal));\n" +
     "   float nDotL = max(dot(u_LightDirection, normal), 0.0);\n" +
     "   vec3 diffuse = u_LightColor*vec3(a_Color)*nDotL;\n" +
     "   vec3 ambient = u_AmbientLight*a_Color.rgb;\n" +
@@ -56,6 +57,13 @@ function main() {
         return;
     }
 
+    //设置法向量变换矩阵的相关信息
+    var u_NormalMatrix = gl.getUniformLocation(gl.program, "u_NormalMatrix");
+    if (u_NormalMatrix < 0) {
+        console.log("无法获取法向量变换矩阵的存储位置");
+        return;
+    }
+
     //设置光线颜色矩阵的相关信息
     var u_LightColor = gl.getUniformLocation(gl.program, "u_LightColor");
     if (u_LightColor < 0) {
@@ -91,11 +99,12 @@ function main() {
     //进入场景初始化
     //设置视角矩阵的相关信息（视点，视线，上方向）
     var viewMatrix = new Matrix4();
-    viewMatrix.setLookAt(3, 3, 7, 0, 0, 0, 0, 1, 0);
+    viewMatrix.setLookAt(-7, 2.5, 6, 0, 0, 0, 0, 1, 0);
 
     //设置模型矩阵的相关信息
     var modelMatrix = new Matrix4();
-    modelMatrix.setRotate(0, 0, 0, 1);
+    modelMatrix.setTranslate(0,1,0);
+    modelMatrix.setRotate(90, 0, 0, 1);
 
     //设置透视投影矩阵
     var projMatrix = new Matrix4();
@@ -106,6 +115,12 @@ function main() {
 
     //将试图矩阵传给u_ViewMatrix变量
     gl.uniformMatrix4fv(u_ModelViewMatrix, false, modeViewMatrix.elements);
+
+    //设置法向量变换矩阵
+    var normalMatrix = new Matrix4();
+    normalMatrix.setInverseOf(modelMatrix);
+    normalMatrix.transpose();
+    gl.uniformMatrix4fv(u_NormalMatrix, false, normalMatrix.elements);
 
     //开启隐藏面清除
     gl.enable(gl.DEPTH_TEST);
